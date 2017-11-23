@@ -1,6 +1,7 @@
 import calendar
 import datetime
 import time
+import turtle
 
 '''
     python时间相关操作：http://www.cnblogs.com/fengfenggirl/archive/2013/05/20/python_time.html
@@ -189,3 +190,24 @@ def recurse(n, s):
 
 
 recurse(3, 0)
+
+# 练习 5-4
+mTurtle = turtle.Turtle()
+
+
+def draw(t, length, n):
+    print(n)
+    if n == 0:
+        return
+    angle = 50
+    t.fd(length * n)
+    t.lt(angle)
+    draw(t, length, n - 1)
+    t.rt(2 * angle)
+    draw(t, length, n - 1)
+    t.lt(angle)
+    t.bk(length * n)
+
+
+draw(mTurtle, 5, 5)
+turtle.mainloop()
