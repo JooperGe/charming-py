@@ -119,3 +119,73 @@ for month in range(1, 13):
 a = '2011-09-28 10:00:00'
 pattern = '%Y-%m-%d %H:%M:%S'
 print(time.mktime(time.strptime(a, pattern)))
+
+
+# 练习 5-2
+def domulti(base, times):
+    print('multi', base, times)
+    result = 1
+    for b in range(times):
+        result = base * result;
+    print(result)
+    return result;
+
+
+def check_fermat(a, b, c, n):
+    if (n <= 2):
+        print('请输入合适的n')
+    else:
+        if ((domulti(a, n) + domulti(b, n)) == domulti(c, n)):
+            print('天呐，费马弄错了！')
+        else:
+            print('不，那样不行')
+
+
+a = input('input value of a')
+b = input('input value of a')
+c = input('input value of a')
+n = input('input value of a')
+check_fermat(int(a), int(b), int(c), int(n))
+
+
+# 练习 5-2
+def do_diff(l1, l2, base):
+    '''
+    计算base与l1+l2的大小关系
+    :param l1:
+    :param l2:
+    :param base:
+    :return: True：可以形成三角形；False：不可以
+    '''
+    if (base > (l1 + l2)):
+        return False
+    else:
+        return True
+
+
+def is_triangle(l1, l2, l3):
+    res1 = do_diff(l1, l2, l3)
+    res2 = do_diff(l1, l3, l2)
+    res3 = do_diff(l1, l3, l1)
+    if (res1 & res2 & res3):
+        print('Yes')
+    else:
+        print('No')
+
+
+l1 = input('input value of l1')
+l2 = input('input value of l2')
+l3 = input('input value of l3')
+is_triangle(l1, l2, l3)
+
+
+# 练习 5-4
+def recurse(n, s):
+    print(n, s)
+    if n == 0:
+        print(s)
+    else:
+        recurse(n - 1, n + s)
+
+
+recurse(3, 0)
